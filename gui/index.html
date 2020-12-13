@@ -93,8 +93,8 @@
             e.preventDefault();
             if(x < max_fields){
                 x++;
-                $(wrapper).append('<div><input type="text" class="form-control" name="mygrades[]" placeholder="Grade in percent (Ex. 80)"><a href="#" class="delete">Delete</a></div>'); //add input box
-                $(wrapper2).append('<div><input type="text" class="form-control" name="myweights[]" placeholder="Weight of grade in class (Ex. 6.25)"><a href="#" class="blank"     ""></a></div>');
+                $(wrapper).append('<div><input type="number" class="form-control" name="mygrades[]" placeholder="Grade in percent (Ex. 80)"><a href="#" class="delete">Delete</a></div>'); //add input box
+                $(wrapper2).append('<div><input type="number" step="0.01" class="form-control" name="myweights[]" placeholder="Weight of grade in class (Ex. 6.25)"><a href="#" class="blank"     ""></a></div>');
             }
     		else
     		{
@@ -127,7 +127,10 @@
         </div>
       </div>
     </div>
-    <button class="calculate">Calculate!</button>
+    <script src="linkers/calculate.js"></script>
+    <h4 id="par"></h4>
+    <h3 id="grade"></h3>
+    <button class="calculate" onclick="makeCalculation()">Calculate!</button>
     <script src="./renderer.js"></script>
   </body>
 </html>
