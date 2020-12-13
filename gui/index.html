@@ -2,29 +2,132 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Grade Calculator</title>
+    <title>Class Grade Calculator</title>
     <link rel="stylesheet" href="bootstrap.css"/>
     <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <style>
+      .blank{
+        background-color: white;
+        border: none;
+        color: white;
+        padding: 5px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 11.5px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.5s;
+      }
+
+      .delete{
+          background-color: #d43519;
+          border: none;
+          color: white;
+          padding: 5px 15px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 14px;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 8px;
+          transition: all 0.5s;
+          position: relative;
+          left: -320px;
+          top: -36px;
+        }
+
+        .delete:hover {
+          background-color: #f54020;
+          color: white;
+          text-decoration: none;
+        }
+
+        .delete span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+
+        .calculate{
+            background-color: #11b305;
+            border: none;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 25px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.5s;
+          }
+
+          .calculate:hover {
+            background-color: #0ec400;
+            color: white;
+            text-decoration: none;
+          }
+
+          .calculate span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+          }
+    </style>
+    <script>
+    $(document).ready(function() {
+        var max_fields      = 100;
+        var wrapper         = $(".grade");
+        var wrapper2        = $(".weight");
+        var add_button      = $(".add_form_field");
+
+        var x = 0;
+        $(add_button).click(function(e){
+            e.preventDefault();
+            if(x < max_fields){
+                x++;
+                $(wrapper).append('<div><input type="text" class="form-control" name="mygrades[]" placeholder="Grade in percent (Ex. 80)"><a href="#" class="delete">Delete</a></div>'); //add input box
+                $(wrapper2).append('<div><input type="text" class="form-control" name="myweights[]" placeholder="Weight of grade in class (Ex. 6.25)"><a href="#" class="blank"     ""></a></div>');
+            }
+    		else
+    		{
+    		    alert('You Reached the limits')
+    		}
+        });
+
+        $(wrapper).on("click",".delete", function(e){
+            e.preventDefault(); $(this).parent('div').remove();
+            e.preventDefault(); $(".weight div:last-child").remove();
+            x--;
+        })
+    });
+    </script>
   </head>
   <body>
-    <h1>Grade Calculator</h1>
+    <h1>Class Grade Calculator</h1>
     <h4><i>Made by Firas Natour</i></h4>
-    <label>Enter your grades, along with their weight:</label>
+    <label>Enter your grades, along with their weight</label>
     <!-- You can also require other files to run in this process -->
     <div class="container">
       <div class="row">
-        <div class="form-group name1 col-md-6">
-            <label for="exampleInputEmail1" class="formText">GRADE:</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="muverName">
+        <div class="form-group grade col-md-6">
+            <label class="formText">GRADE:</label>
+            <button class="add_form_field">Add New Grade &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
         </div>
 
-        <div class="form-group name2 col-md-6">
-            <label for="exampleInputEmail1## Heading ##" class="formText">WEIGHT:</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="muverPhone">
+        <div class="form-group weight col-md-6">
+            <label class="formText">WEIGHT:</label>
         </div>
       </div>
     </div>
-
+    <button class="calculate">Calculate!</button>
     <script src="./renderer.js"></script>
   </body>
 </html>
