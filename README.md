@@ -4,9 +4,9 @@ Using Electron javascript framework
 
 The gui folder contains all of the important files used to make the program
 
-To create the executable for the program:
+To create the executable for the program, first install node.js
 
-Use terminal or git bash:
+After that, use terminal or git bash:
 
 $ npm install -g electron-packager
 
