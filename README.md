@@ -1,4 +1,4 @@
-Simple Class Grade Calculator Made by Firas Natour
+Simple Class Grade Calculator
 
 Using Electron javascript framework
 
